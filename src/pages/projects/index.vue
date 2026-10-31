@@ -99,6 +99,7 @@
                 target="_blank"
               />
               <q-btn
+                v-if="selectedProject.repo"
                 color="grey-8"
                 outline
                 unelevated
@@ -175,6 +176,30 @@ usePageMeta(
 );
 
 const projects = [
+  {
+    id: 8,
+    icon: "speed",
+    name: "OVS — Shopify Image Optimizer",
+    category: "SaaS Propio",
+    stack: "Next.js + Firebase + Vertex AI + Shopify API",
+    description:
+      "SaaS propio para tiendas Shopify: conversión masiva de imágenes a WebP y alt text generado con IA, con backups automáticos y rollback de un clic.",
+    features: ["WebP Bulk", "AI Alt Text", "Auto-backup", "Rollback"],
+    url: "https://ovs.3xerries.tech",
+    shot: "/images/projects/live-ovs.png"
+  },
+  {
+    id: 9,
+    icon: "trending_up",
+    name: "NovaTrade Journal",
+    category: "SaaS Propio",
+    stack: "Trading Journal SaaS — MT4/MT5/cTrader + crypto exchanges",
+    description:
+      "SaaS propio de trading journal: auto-sync read-only de operaciones, Radar con 52 checks de leaks, backtesting con replay y ROI real por prop firm. Bilingüe EN/ES.",
+    features: ["Auto-sync", "Radar", "Backtesting", "Prop Firms"],
+    url: "https://www.novatradejournal.com",
+    shot: "/images/projects/live-novatrade.png"
+  },
   {
     id: 1,
     icon: "casino",
