@@ -1,20 +1,43 @@
 <!doctype html>
-<html>
+<html lang="es">
   <head>
     <title><%= productName %></title>
 
     <meta charset="utf-8" />
     <meta name="description" content="<%= productDescription %>" />
     <meta name="format-detection" content="telephone=no" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Ricardo Contreras" />
+    <meta name="theme-color" content="#0A0A0A" />
+    <link rel="canonical" href="https://rcrdevelop.dev/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="RCR Develop" />
+    <meta property="og:title" content="<%= productName %>" />
+    <meta property="og:description" content="<%= productDescription %>" />
+    <meta property="og:url" content="https://rcrdevelop.dev/" />
+    <meta
+      property="og:image"
+      content="https://rcrdevelop.dev/images/hero/home-hero.webp"
+    />
+    <meta property="og:locale" content="es_ES" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="<%= productName %>" />
+    <meta name="twitter:description" content="<%= productDescription %>" />
+    <meta
+      name="twitter:image"
+      content="https://rcrdevelop.dev/images/hero/home-hero.webp"
+    />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1<% if (ctx.mode.cordova || ctx.mode.capacitor) { %>, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover<% } %>"
     />
+    <% if (ctx.dev) { %>
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline';<% if (ctx.dev) { %> connect-src 'self' ws://localhost:*; worker-src 'self' blob:;<% } %>"
+      content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; media-src 'self' https://commondatastorage.googleapis.com; connect-src 'self' ws://localhost:*; worker-src 'self' blob:;"
     />
-
+    <% } %>
     <link
       rel="icon"
       type="image/png"
@@ -40,6 +63,29 @@
       href="icons/favicon-16x16.png"
     />
     <link rel="icon" type="image/ico" href="favicon.ico" />
+
+    <% if (ctx.prod) { %>
+    <link
+      rel="preload"
+      as="image"
+      href="/images/hero/home-hero.webp"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="/assets/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ-D-x-0Q06.woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="/assets/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3yUBA-ccAYIvAh.woff2"
+      crossorigin
+    />
+    <% } %>
   </head>
   <body>
     <!-- quasar:entry-point -->

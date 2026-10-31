@@ -1,12 +1,8 @@
 # Logs
 logs
 *.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 lerna-debug.log*
 .pnpm-debug.log*
-
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 # Runtime data
@@ -99,9 +95,6 @@ dist
 node_modules
 # .env files
 .env*
-# Quasar core related directories
-.quasar
-/dist
 /quasar.config.*.temporary.compiled*
 # Cordova related directories and files
 /src-cordova/node_modules
@@ -111,4 +104,6 @@ node_modules
 # Capacitor related directories and files
 /src-capacitor/www
 /src-capacitor/node_modules
-# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

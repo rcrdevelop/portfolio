@@ -20,9 +20,9 @@ import type {
 
 declare module 'vue-router' {
   interface TypesConfig {
-    ParamParsers:
-      | never
+    _ParamParsers: {}
     RouteNamedMap: import('vue-router/auto-routes').RouteNamedMap
+    _RouteFileInfoMap: import('vue-router/auto-routes')._RouteFileInfoMap
   }
 }
 
@@ -60,6 +60,34 @@ declare module 'vue-router/auto-routes' {
       { path: ParamValue<false> },
       | never
     >,
+    '/about/': RouteRecordInfo<
+      '/about/',
+      '/about',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/contact/': RouteRecordInfo<
+      '/contact/',
+      '/contact',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/projects/': RouteRecordInfo<
+      '/projects/',
+      '/projects',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/skills/': RouteRecordInfo<
+      '/skills/',
+      '/skills',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
   }
 
   /**
@@ -80,11 +108,15 @@ declare module 'vue-router/auto-routes' {
         | '//second'
       views:
         | 'default'
+      pathParamNames:
+        | never
     }
     'src/pages/index/(index).vue': {
       routes:
         | '//(index)'
       views:
+        | never
+      pathParamNames:
         | never
     }
     'src/pages/index/second.vue': {
@@ -92,11 +124,47 @@ declare module 'vue-router/auto-routes' {
         | '//second'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/pages/[...path].vue': {
       routes:
         | '/[...path]'
       views:
+        | never
+      pathParamNames:
+        | 'path'
+    }
+    'src/pages/about/index.vue': {
+      routes:
+        | '/about/'
+      views:
+        | never
+      pathParamNames:
+        | never
+    }
+    'src/pages/contact/index.vue': {
+      routes:
+        | '/contact/'
+      views:
+        | never
+      pathParamNames:
+        | never
+    }
+    'src/pages/projects/index.vue': {
+      routes:
+        | '/projects/'
+      views:
+        | never
+      pathParamNames:
+        | never
+    }
+    'src/pages/skills/index.vue': {
+      routes:
+        | '/skills/'
+      views:
+        | never
+      pathParamNames:
         | never
     }
   }

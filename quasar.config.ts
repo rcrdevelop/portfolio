@@ -45,7 +45,7 @@ export default defineConfig(ctx => {
       // https://v2.quasar.dev/quasar-cli-vite/page-routing-with-vue-router#filename-based-routing
       filenameBasedRouting: true,
 
-      vueRouterMode: "hash", // available values: 'hash', 'history'
+      vueRouterMode: "history", // available values: 'hash', 'history'
       // vueRouterBase,
 
       // publicPath: '/',
@@ -91,7 +91,20 @@ export default defineConfig(ctx => {
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-file#framework
     framework: {
-      config: {},
+      config: {
+        dark: true,
+        brand: {
+          primary: "#2563EB", // Royal Blue — white text 5.2:1 (AA)
+          secondary: "#1E3A8A", // Deep Navy Blue
+          accent: "#60A5FA", // Sky Blue — 7.5:1 on #171717
+          dark: "#171717", // Bento card
+          "dark-page": "#0A0A0A", // Page background
+          positive: "#34D399",
+          negative: "#F87171",
+          info: "#60A5FA",
+          warning: "#FBBF24"
+        }
+      },
 
       // iconSet: 'material-icons', // Quasar icon set
       // lang: 'en-US', // Quasar language pack
@@ -100,11 +113,11 @@ export default defineConfig(ctx => {
       // (like functional components as one of the examples),
       // you can manually specify Quasar components/directives to be available everywhere:
       //
-      // components: [],
+      components: ["QParallax"],
       // directives: [],
 
       // Quasar plugins
-      plugins: []
+      plugins: ["Meta"]
     },
 
     // animations: 'all', // --- includes all animations

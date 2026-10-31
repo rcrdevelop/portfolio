@@ -184,7 +184,7 @@ const projects = [
     description:
       "Dashboard en tiempo real para análisis de juego de poker con estadísticas avanzadas y reproductor de manos.",
     features: ["Real-time", "Analytics", "Data Visualization", "Desktop App"],
-    url: "https://poker-hud.rcrdevelop.dev",
+    url: "https://hud-rcr.web.app",
     repo: "https://github.com/rcrdevelop/rcr-poker-hud",
     shot: "/images/projects/live-hud.webp"
   },
@@ -197,7 +197,7 @@ const projects = [
     description:
       "Plataforma para gestión de propiedades con firma digital de contratos integrada.",
     features: ["CRUD", "DocuSign", "PDF Generation", "Email Automation"],
-    url: "https://real-state.rcrdevelop.dev",
+    url: "https://real-state-rcr.web.app",
     repo: "https://github.com/rcrdevelop/rcr-real-estate",
     shot: "/images/projects/live-real-estate.webp"
   },
@@ -215,7 +215,7 @@ const projects = [
       "Product Filters",
       "SEO Optimized"
     ],
-    url: "https://headless.rcrdevelop.dev",
+    url: "https://headless-rcr.web.app",
     repo: "https://github.com/rcrdevelop/rcr-shopify-headless",
     shot: "/images/projects/live-headless.webp"
   },
@@ -233,7 +233,7 @@ const projects = [
       "User Management",
       "Billing"
     ],
-    url: "https://phones.rcrdevelop.dev",
+    url: "https://rcr-phone.web.app",
     repo: "https://github.com/rcrdevelop/rcr-telephony",
     shot: "/images/projects/live-phone.webp"
   },
@@ -251,7 +251,7 @@ const projects = [
       "Progress Tracking",
       "Responsive"
     ],
-    url: "https://migo.rcrdevelop.dev",
+    url: "https://migo-rcr.web.app",
     repo: "https://github.com/rcrdevelop/rcr-migo-kids",
     shot: "/images/projects/live-migo.webp"
   },
@@ -264,7 +264,7 @@ const projects = [
     description:
       "Plataforma de búsqueda y reserva de vuelos con sistema de paginación avanzado.",
     features: ["Flight Search", "Booking System", "Pagination", "Filters"],
-    url: "https://sky-book.rcrdevelop.dev",
+    url: "https://skybook-rcr.web.app",
     repo: "https://github.com/rcrdevelop/rcr-airline-booking",
     shot: "/images/projects/live-skybook.webp"
   },
@@ -276,7 +276,7 @@ const projects = [
     stack: "Vue.js + Vuetify + MongoDB",
     description: "Plataforma de búsqueda con respuestas tipo YouTube.",
     features: ["Search Engine", "Video Player", "Recommendations", "Comments"],
-    url: "https://videohub.rcrdevelop.dev",
+    url: "https://video-hub-rcr.web.app",
     repo: "https://github.com/rcrdevelop/rcr-video-hub",
     shot: "/images/projects/live-video.webp"
   }

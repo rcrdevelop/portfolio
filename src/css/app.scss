@@ -1,1 +1,455 @@
-// app global css
+// app global css — dark bento design system
+:root {
+  --bento-bg: #0a0a0a;
+  --bento-card: #171717;
+  --bento-card-2: #1f1f1f;
+  --bento-border: #2e2e2e;
+  --bento-border-hover: var(--q-accent);
+  --bento-text: #f5f5f5;
+  --bento-muted: #a3a3a3;
+  --bento-label: #8a8a8a;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--bento-text);
+  background-color: var(--bento-bg);
+  overflow-x: hidden;
+}
+
+// Faint grid pattern, fading toward the edges
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 110px 110px;
+  mask: radial-gradient(ellipse 90% 80% at 50% 20%, #000 30%, transparent 75%);
+}
+
+// Route Transition
+.page-fade-enter-active,
+.page-fade-leave-active {
+  transition:
+    opacity 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.page-fade-enter-from {
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+.page-fade-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+// Project Switch Transition
+.project-switch-enter-active,
+.project-switch-leave-active {
+  transition:
+    opacity 0.28s ease,
+    transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.project-switch-enter-from {
+  opacity: 0;
+  transform: translateY(12px) scale(0.99);
+}
+
+.project-switch-leave-to {
+  opacity: 0;
+  transform: translateY(-8px) scale(0.99);
+}
+
+// Keyframes
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseRing {
+  0% {
+    box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.65);
+  }
+  70% {
+    box-shadow: 0 0 0 9px rgba(52, 211, 153, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(52, 211, 153, 0);
+  }
+}
+
+@keyframes floatSlow {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeInUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(var(--i, 0) * 60ms);
+}
+
+.stagger-1 {
+  animation-delay: 0.08s;
+}
+.stagger-2 {
+  animation-delay: 0.16s;
+}
+.stagger-3 {
+  animation-delay: 0.24s;
+}
+.stagger-4 {
+  animation-delay: 0.32s;
+}
+
+// ------------------------------------------------------------------
+// Bento primitives
+// ------------------------------------------------------------------
+
+// Notched ("scalloped") corners via 4 radial-gradient masks.
+// The 1px border is an inset box-shadow so it follows the same mask.
+$bento-notch:
+  radial-gradient(circle 10px at 0 0, transparent 98%, #000) top left / 50% 50%
+    no-repeat,
+  radial-gradient(circle 10px at 100% 0, transparent 98%, #000) top right / 50%
+    50% no-repeat,
+  radial-gradient(circle 10px at 0 100%, transparent 98%, #000) bottom
+    left / 50% 50% no-repeat,
+  radial-gradient(circle 10px at 100% 100%, transparent 98%, #000) bottom
+    right / 50% 50% no-repeat;
+
+.bento-card {
+  position: relative;
+  background: var(--bento-card);
+  border-radius: 14px;
+  box-shadow: inset 0 0 0 1px var(--bento-border);
+  mask: $bento-notch;
+  transition:
+    box-shadow 150ms ease,
+    transform 150ms ease,
+    background-color 150ms ease;
+
+  &:hover {
+    box-shadow: inset 0 0 0 1px var(--bento-border-hover);
+    transform: translateY(-2px);
+  }
+}
+
+.bento-card--pad {
+  padding: 24px;
+}
+
+@media (max-width: 599px) {
+  .bento-card--pad {
+    padding: 18px;
+  }
+}
+
+.bento-card--link {
+  cursor: pointer;
+
+  .bento-arrow {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    font-size: 16px;
+    color: var(--bento-muted);
+    transition:
+      color 150ms ease,
+      transform 150ms ease;
+    z-index: 2;
+  }
+
+  &:hover .bento-arrow {
+    color: var(--q-accent);
+    transform: translate(2px, -2px);
+  }
+}
+
+.bento-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--bento-label);
+}
+
+.bento-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--bento-border);
+  background: var(--bento-card-2);
+  color: var(--bento-text);
+  font-size: 0.78rem;
+  line-height: 1.4;
+  transition: border-color 150ms ease;
+
+  &:hover {
+    border-color: var(--bento-border-hover);
+  }
+}
+
+.bento-btn {
+  width: 48px;
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: var(--bento-card-2);
+  box-shadow: inset 0 0 0 1px var(--bento-border);
+  color: var(--bento-muted);
+  mask:
+    radial-gradient(circle 6px at 0 0, transparent 98%, #000) top left / 50% 50%
+      no-repeat,
+    radial-gradient(circle 6px at 100% 0, transparent 98%, #000) top right / 50%
+      50% no-repeat,
+    radial-gradient(circle 6px at 0 100%, transparent 98%, #000) bottom left /
+      50% 50% no-repeat,
+    radial-gradient(circle 6px at 100% 100%, transparent 98%, #000) bottom right
+      / 50% 50% no-repeat;
+  transition:
+    box-shadow 150ms ease,
+    color 150ms ease,
+    transform 150ms ease;
+
+  &:hover {
+    box-shadow: inset 0 0 0 1px var(--bento-border-hover);
+    color: var(--q-accent);
+    transform: translateY(-2px);
+  }
+}
+
+// Faded image used as card background (intro card, page headers)
+.bento-card-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+
+  img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: right center;
+    opacity: 0.18;
+    mask: linear-gradient(90deg, transparent 0%, #000 55%);
+  }
+}
+
+// ------------------------------------------------------------------
+// Dark-mode equivalents of the former light-theme overrides
+// ------------------------------------------------------------------
+
+body {
+  h1,
+  h2,
+  h3 {
+    color: var(--bento-text);
+    letter-spacing: -0.02em;
+  }
+}
+
+// Secondary text & captions (muted on dark surfaces)
+.text-grey-7,
+.text-grey-8,
+.q-item__label--caption,
+.q-stepper__caption {
+  color: #a3a3a3 !important;
+}
+
+.text-grey-9 {
+  color: #e5e5e5 !important;
+}
+
+.q-field__messages {
+  color: #cbd5e1 !important;
+}
+
+.text-dark,
+.text-black {
+  color: var(--bento-text) !important;
+}
+
+.bg-grey-1 {
+  background: #0f0f0f !important;
+}
+
+.bg-grey-2 {
+  background: #141414 !important;
+}
+
+.bg-white {
+  background: var(--bento-card) !important;
+}
+
+// Quasar dark-mode polish for components used on cards
+.body--dark .q-chip {
+  background: var(--bento-card-2);
+  border: 1px solid var(--bento-border);
+  color: var(--bento-text);
+}
+
+.container.q-py-xl {
+  padding-top: 56px !important;
+  padding-bottom: 64px !important;
+}
+
+.q-card {
+  border-radius: 14px;
+  transition:
+    transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.32s ease;
+}
+
+.q-card--bordered {
+  border: 1px solid var(--bento-border);
+  border-radius: 14px;
+}
+
+// Interactive cards (inner pages): same visual language as bento cards
+.interactive-card {
+  background: var(--bento-card);
+  border: 1px solid var(--bento-border);
+  transition:
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: var(--bento-border-hover);
+  }
+}
+
+// Status dot (green pulsing)
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #34d399;
+  animation: pulseRing 2s infinite;
+}
+
+// Icon Badge Box (dark)
+.icon-box {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(96, 165, 250, 0.12);
+  border: 1px solid rgba(96, 165, 250, 0.3);
+  transition:
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.3s ease;
+}
+
+.interactive-card:hover .icon-box,
+.bento-card:hover .icon-box {
+  transform: scale(1.1) rotate(-4deg);
+}
+
+// Section Header Accent Line
+.section-divider {
+  width: 64px;
+  height: 4px;
+  border-radius: 999px;
+  margin: 14px auto 0;
+  background: linear-gradient(90deg, var(--q-primary), var(--q-accent));
+}
+
+// Button micro-interactions
+.q-btn {
+  border-radius: 10px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  transition:
+    transform 0.24s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.24s ease;
+
+  &:hover:not(:disabled) {
+    transform: translateY(-2px);
+  }
+
+  .q-icon {
+    transition: transform 0.24s ease;
+  }
+
+  &:hover .q-icon.on-right {
+    transform: translateX(4px);
+  }
+}
+
+// Mobile spacing
+@media (max-width: 599px) {
+  .container.q-py-xl {
+    padding-top: 40px !important;
+    padding-bottom: 48px !important;
+  }
+  .text-h3 {
+    font-size: 1.9rem;
+    line-height: 1.2;
+  }
+}
+
+// Contrast fix: light semantic colors carry dark text, not white
+.bg-positive,
+.bg-accent,
+.bg-warning,
+.bg-negative,
+.bg-info,
+.bg-positive.text-white,
+.bg-accent.text-white,
+.bg-warning.text-white,
+.bg-negative.text-white,
+.bg-info.text-white,
+.q-badge.bg-positive,
+.q-badge.bg-accent,
+.q-badge.bg-warning,
+.q-badge.bg-negative,
+.q-badge.bg-info,
+.q-chip.bg-positive,
+.q-chip.bg-accent,
+.q-chip.bg-warning,
+.q-chip.bg-negative,
+.q-chip.bg-info,
+.q-btn.bg-positive,
+.q-btn.bg-accent,
+.q-btn.bg-warning,
+.q-btn.bg-negative,
+.q-btn.bg-info {
+  color: #0a0a0a !important;
+
+  .q-icon,
+  .q-btn__content,
+  .text-white {
+    color: #0a0a0a !important;
+  }
+}
